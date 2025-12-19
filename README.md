@@ -1,111 +1,68 @@
-Data-Driven Protein Intake Prediction for Lean Bulking
-Overview
+## Data-Driven Protein Intake Prediction for Lean Bulking
+## Overview
 
 Most online protein calculators use static formulas and provide generic recommendations.
 This project builds a machine learning–based nutrition prediction system that adapts protein and calorie recommendations based on individual body metrics and workout behavior, specifically for lean bulking.
 
 The system is fully production-ready and deployed using FastAPI and Render.
 
-Problem Statement
+## Problem Statement
 
 Traditional nutrition calculators fail to account for variations in training intensity, activity level, and individual body composition. As a result, users with different workout patterns often receive similar protein recommendations.
 
 This project addresses that gap by learning from data and generating personalized nutrition targets using machine learning, with measurable accuracy and explainability.
 
-Machine Learning Approach
+## Methodology
+● Collected and generated a structured fitness dataset with body metrics and training
+behavior.
+● Performed feature engineering by encoding categorical variables and scaling numeric
+inputs.
+● Trained a Multiple Linear Regression model using a preprocessing pipeline.
+● Applied cross-validation to ensure generalization and avoid overfitting.
+● Evaluated the model using MAE, RMSE, and R2 metrics.
+● Validated predictions using real-world inputs.
+● Exported the trained model for production use.
 
-Algorithm: Multiple Linear Regression
+## Lean Bulk Nutrition ML API
 
-Why this algorithm?
+A FastAPI-based machine learning API that predicts personalized nutrition metrics for lean bulking.
 
-Nutritional requirements scale linearly with body metrics and training load
+## Features
+- Protein intake prediction (g/day)
+- Daily calorie requirement (kcal/day)
+- Expected fat loss rate (kg/week)
+- Data-driven predictions using Multiple Linear Regression
+- Explainable and interpretable ML model
 
-Highly interpretable coefficients
+## Why Multiple Linear Regression?
+The relationships between body metrics, training intensity, and nutrition requirements are continuous, interpretable, and largely linear.  
+Multiple Linear Regression provides reliable predictions while maintaining full explainability, which is critical in health and fitness applications.
 
-Stable and explainable predictions
+## Tech Stack
+- Python
+- scikit-learn
+- FastAPI
+- Joblib
+- Render (Deployment)
 
-Suitable for continuous outputs like protein and calories
+## Project Structure
+lean_bulk_api/
+│
+├── app/
+│ ├── main.py
+│ ├── schemas.py
+│ └── model/
+│ └── lean_bulk_multi_output_model.pkl
+│
+├── requirements.txt
+├── render.yaml
+└── README.md
 
-Input Features
-
-Age
-
-Gender
-
-Height (cm)
-
-Weight (kg)
-
-Workout hours per day
-
-Activity level (low / medium / high)
-
-Model Outputs
-
-Daily protein intake (g/day)
-
-Daily calorie intake (kcal/day)
-
-Expected fat loss rate (kg/week)
-
-Model Evaluation
-
-Mean Absolute Error (MAE)
-
-Root Mean Squared Error (RMSE)
-
-R² Score and Adjusted R²
-
-5-fold Cross Validation
-
-The model achieved:
-
-Protein R² ≈ 0.93
-
-Calories R² ≈ 0.99
-
-Stable cross-validation performance
-
-Tech Stack
-
-Python
-
-Pandas, NumPy
-
-Scikit-learn
-
-FastAPI
-
-Joblib
-
-Render (Deployment)
-
-API Usage
-Endpoint
-POST /predict
-
-Request Body
-{
-  "age": 20,
-  "gender": 1,
-  "height_cm": 164,
-  "weight_kg": 62.5,
-  "workout_hours": 2.0,
-  "activity_level": 2
-}
-
-Response
-{
-  "protein_g_per_day": 114.7,
-  "calories_kcal_per_day": 2832,
-  "fat_loss_rate_kg_per_week": 0.34
-}
-
-Deployment
+## Deployment
 
 The API is deployed on Render and can be accessed publicly for real-time predictions.
 
-Future Improvements
+## Future Improvements
 
 Add real user data
 
@@ -115,7 +72,7 @@ Add frontend dashboard
 
 Try regularized regression (Ridge/Lasso)
 
-Author
+## Author
 
 Viraj Mhadgut
 MSc Data Science
