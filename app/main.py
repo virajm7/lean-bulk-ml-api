@@ -4,6 +4,17 @@ import pandas as pd
 
 from app.schemas import UserInput, PredictionOutput
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # allow all for demo
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 app = FastAPI(
     title="Lean Bulk Nutrition Prediction API",
     description="Predict protein intake, calories, and fat loss rate using ML",
