@@ -6,13 +6,7 @@ from app.schemas import UserInput, PredictionOutput
 
 from fastapi.middleware.cors import CORSMiddleware
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],   # allow all for demo
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 
 
 app = FastAPI(
@@ -20,7 +14,13 @@ app = FastAPI(
     description="Predict protein intake, calories, and fat loss rate using ML",
     version="1.0"
 )
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # allow all for demo
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Load trained model
 model = joblib.load("app/model/final2_lean_bulk_multi_output_model.pkl")
 
