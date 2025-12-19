@@ -76,3 +76,5 @@ Try regularized regression (Ridge/Lasso)
 
 Viraj Mhadgut
 MSc Data Science
+
+Dataset Link : https://www.kaggle.com/datasets/virajwork/lean-bulk-dataset
